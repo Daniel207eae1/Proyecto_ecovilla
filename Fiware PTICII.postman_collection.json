@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "b855ae34-fd9c-495a-8dd3-dc279fd0c16f",
+		"name": "Fiware PTICII",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30296094"
+	},
+	"item": [
+		{
+			"name": "Weather_Station",
+			"item": [
+				{
+					"name": "Creacion_entidad_WS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"WS_UPB_EVI\",\r\n    \"type\": \"WS\",\r\n    \"humidity\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 32.6\r\n    },\r\n    \"pm_10\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 12.3\r\n    },\r\n    \"pm_2_5\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 10.2\r\n    },\r\n    \"pressure\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 1013.25\r\n    },\r\n    \"solar_radiation\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 1000.0\r\n    },\r\n    \"temperature\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 25.0\r\n    },\r\n    \"wind_dir\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 270.0\r\n    },\r\n    \"wind_speed\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 10.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/entities",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creacion_suscripcion_WS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Suscripcion a cambios de contexto WeatherStation_Ecovilla\",\r\n    \"subject\": {\r\n        \"entities\": [\r\n            {\r\n                \"idPattern\": \".*\",\r\n                \"type\": \"WS\"\r\n            }\r\n        ],\r\n        \"condition\": {\r\n            \"attrs\": [\r\n                \"humidity\",\r\n                \"pm_10\",\r\n                \"pm_2_5\",\r\n                \"pressure\",\r\n                \"solar_radiation\",\r\n                \"temperature\",\r\n                \"wind_dir\",\r\n                \"wind_speed\"\r\n            ]\r\n        }\r\n    },\r\n    \"notification\": {\r\n        \"http\": {\r\n            \"url\": \"http://quantumleap:8668/v2/notify\"\r\n        },\r\n        \"attrs\": [\r\n            \"id\",\r\n            \"humidity\",\r\n            \"pm_10\",\r\n            \"pm_2_5\",\r\n            \"pressure\",\r\n            \"solar_radiation\",\r\n            \"temperature\",\r\n            \"wind_dir\",\r\n            \"wind_speed\"\r\n        ],\r\n        \"metadata\": [\r\n            \"dateCreated\",\r\n            \"dateModified\"\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/subscriptions",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar_entidad_WS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1026/v2/entities/WS_UPB_EVI",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								"WS_UPB_EVI"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar_entidad_WS",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"humidity\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 1000.2,\r\n        \"metadata\": {}\r\n    },\r\n    \"pm_10\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 12.3,\r\n        \"metadata\": {}\r\n    },\r\n    \"pm_2_5\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 10.2,\r\n        \"metadata\": {}\r\n    },\r\n    \"pressure\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 1013.25,\r\n        \"metadata\": {}\r\n    },\r\n    \"solar_radiation\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 900,\r\n        \"metadata\": {}\r\n    },\r\n    \"temperature\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 20,\r\n        \"metadata\": {}\r\n    },\r\n    \"wind_dir\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 270,\r\n        \"metadata\": {}\r\n    },\r\n    \"wind_speed\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 25,\r\n        \"metadata\": {}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/entities/WS_UPB_EVI/attrs",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								"WS_UPB_EVI",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Battery",
+			"item": [
+				{
+					"name": "Creacion_entidad_Battery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"EVI_BatteryMonitor01\",\r\n    \"type\": \"BatteryMonitor\",\r\n    \"batterycapacityremaining\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 2\r\n    },\r\n    \"batterycapacityremoved\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 3\r\n    },\r\n    \"batterycapacityreturned\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 4\r\n    },\r\n    \"batterycurrent\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 1\r\n    },\r\n    \"batterynumberofchargecycles\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 4\r\n    },\r\n    \"batterynumberofdischarges\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 25\r\n    },\r\n    \"batterystateofcharge\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 80.0\r\n    },\r\n    \"batterytemperature\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 56.0\r\n    },\r\n    \"batterytimetodischarge\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 177.0\r\n    },\r\n    \"batterytimetofull\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 323\r\n    },\r\n    \"batteryvoltage\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 220.0\r\n    },\r\n    \"devicestate\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 98.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/entities",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creacion_suscripcion_Battery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Suscripcion a cambios de contexto BatteryMonitor_Ecovilla\",\r\n    \"subject\": {\r\n        \"entities\": [\r\n            {\r\n                \"idPattern\": \".*\",\r\n                \"type\": \"BatteryMonitor\"\r\n            }\r\n        ],\r\n        \"condition\": {\r\n            \"attrs\": [\r\n                \"humidity\",\r\n                \"pm_10\",\r\n                \"pm_2_5\",\r\n                \"pressure\",\r\n                \"solar_radiation\",\r\n                \"temperature\",\r\n                \"wind_dir\",\r\n                \"wind_speed\"\r\n            ]\r\n        }\r\n    },\r\n    \"notification\": {\r\n        \"attrs\": [\r\n            \"id\",\r\n            \"humidity\",\r\n            \"pm_10\",\r\n            \"pm_2_5\",\r\n            \"pressure\",\r\n            \"solar_radiation\",\r\n            \"temperature\",\r\n            \"wind_dir\",\r\n            \"wind_speed\"\r\n        ],\r\n        \"http\": {\r\n            \"url\": \"http://quantumleap:8668/v2/notify\"\r\n        },\r\n        \"metadata\": [\r\n            \"dateCreated\",\r\n            \"dateModified\"\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/subscriptions",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar_entidad_Battery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1026/v2/entities/EVI_BatteryMonitor",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								"EVI_BatteryMonitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar_entidad_Battery",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"batterycapacityremaining\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 2\r\n    },\r\n    \"batterycapacityremoved\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 5\r\n    },\r\n    \"batterycapacityreturned\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 4\r\n    },\r\n    \"batterycurrent\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 1\r\n    },\r\n    \"batterynumberofchargecycles\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 4\r\n    },\r\n    \"batterynumberofdischarges\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 25\r\n    },\r\n    \"batterystateofcharge\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 80.0\r\n    },\r\n    \"batterytemperature\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 56.0\r\n    },\r\n    \"batterytimetodischarge\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 177.0\r\n    },\r\n    \"batterytimetofull\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 323\r\n    },\r\n    \"batteryvoltage\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 220.0\r\n    },\r\n    \"devicestate\": {\r\n        \"type\": \"Number\",\r\n        \"value\": 98.0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/entities/EVI_BatteryMonitor01/attrs",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								"EVI_BatteryMonitor01",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SmartMeters",
+			"item": [
+				{
+					"name": "Creacion_entidad_SM",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"SM_EVI01\",\r\n    \"type\": \"SmartMeter\",\r\n    \"activeenergyexport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activeenergyexportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activeenergyimport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activeenergyimportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"frecuency\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsi1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsi2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsi3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsv1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsv2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsv3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i1angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i2angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i3angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"in\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"powerfactor1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"powerfactor2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"powerfactor3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyexport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyexportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyimport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyimportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdcurrent\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdpower\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdvoltage\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdfactor\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v1angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v1_ps\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v2angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v2_ps\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v3angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v3_ps\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/entities",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creacion_suscripcion_SM",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Suscripcion a cambios de contexto SmartMeters_Ecovilla\",\r\n    \"subject\": {\r\n        \"entities\": [\r\n            {\r\n                \"idPattern\": \".*\",\r\n                \"type\": \"SmartMeter\"\r\n            }\r\n        ],\r\n        \"condition\": {\r\n            \"attrs\": [\r\n                \"activeenergyexport\",\r\n                \"activeenergyexportday\",\r\n                \"activeenergyimport\",\r\n                \"activeenergyimportday\",\r\n                \"activepower\",\r\n                \"activepower1\",\r\n                \"activepower2\",\r\n                \"activepower3\",\r\n                \"frecuency\",\r\n                \"harmonicsi1\",\r\n                \"harmonicsi2\",\r\n                \"harmonicsi3\",\r\n                \"harmonicsv1\",\r\n                \"harmonicsv2\",\r\n                \"harmonicsv3\",\r\n                \"i1\",\r\n                \"i1angle\",\r\n                \"i2\",\r\n                \"i2angle\",\r\n                \"i3\",\r\n                \"i3angle\",\r\n                \"in\",\r\n                \"powerfactor1\",\r\n                \"powerfactor2\",\r\n                \"powerfactor3\",\r\n                \"reactiveenergyexport\",\r\n                \"reactiveenergyexportday\",\r\n                \"reactiveenergyimport\",\r\n                \"reactiveenergyimportday\",\r\n                \"reactivepower\",\r\n                \"reactivepower1\",\r\n                \"reactivepower2\",\r\n                \"reactivepower3\",\r\n                \"relativethdcurrent\",\r\n                \"relativethdpower\",\r\n                \"relativethdvoltage\",\r\n                \"totalpowerfactor\",\r\n                \"v1\",\r\n                \"v1angle\",\r\n                \"v1_ps\",\r\n                \"v2\",\r\n                \"v2angle\",\r\n                \"v2_ps\",\r\n                \"v3\",\r\n                \"v3angle\",\r\n                \"v3_ps\"\r\n            ]\r\n        }\r\n    },\r\n    \"notification\": {\r\n        \"http\": {\r\n            \"url\": \"http://quantumleap:8668/v2/notify\"\r\n        },\r\n        \"attrs\": [\r\n            \"id\",\r\n            \"activeenergyexport\",\r\n            \"activeenergyexportday\",\r\n            \"activeenergyimport\",\r\n            \"activeenergyimportday\",\r\n            \"activepower\",\r\n            \"activepower1\",\r\n            \"activepower2\",\r\n            \"activepower3\",\r\n            \"frecuency\",\r\n            \"harmonicsi1\",\r\n            \"harmonicsi2\",\r\n            \"harmonicsi3\",\r\n            \"harmonicsv1\",\r\n            \"harmonicsv2\",\r\n            \"harmonicsv3\",\r\n            \"i1\",\r\n            \"i1angle\",\r\n            \"i2\",\r\n            \"i2angle\",\r\n            \"i3\",\r\n            \"i3angle\",\r\n            \"in\",\r\n            \"powerfactor1\",\r\n            \"powerfactor2\",\r\n            \"powerfactor3\",\r\n            \"reactiveenergyexport\",\r\n            \"reactiveenergyexportday\",\r\n            \"reactiveenergyimport\",\r\n            \"reactiveenergyimportday\",\r\n            \"reactivepower\",\r\n            \"reactivepower1\",\r\n            \"reactivepower2\",\r\n            \"reactivepower3\",\r\n            \"relativethdcurrent\",\r\n            \"relativethdpower\",\r\n            \"relativethdvoltage\",\r\n            \"totalpowerfactor\",\r\n            \"v1\",\r\n            \"v1angle\",\r\n            \"v1_ps\",\r\n            \"v2\",\r\n            \"v2angle\",\r\n            \"v2_ps\",\r\n            \"v3\",\r\n            \"v3angle\",\r\n            \"v3_ps\"\r\n        ],\r\n        \"metadata\": [\r\n            \"dateCreated\",\r\n            \"dateModified\"\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/subscriptions",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar_entidad_SM",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"activeenergyexport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 1\r\n    },\r\n    \"activeenergyexportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 1\r\n    },\r\n    \"activeenergyimport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activeenergyimportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"activepower3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"frecuency\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsi1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsi2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsi3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsv1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsv2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"harmonicsv3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i1angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i2angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"i3angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"in\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"powerfactor1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"powerfactor2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"powerfactor3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyexport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyexportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyimport\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactiveenergyimportday\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"reactivepower3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdcurrent\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdpower\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdvoltage\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"relativethdfactor\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v1\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v1angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v1_ps\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v2\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v2angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v2_ps\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v3\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v3angle\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    },\r\n    \"v3_ps\":{\r\n        \"type\": \"Number\",\r\n        \"value\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1026/v2/entities/SM_EVI01/attrs",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								"SM_EVI01",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar_entidad_SM",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1026/v2/entities/SM_EVI01/",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								"SM_EVI01",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Estado_OCB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1026/version",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"version"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar_entidades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1026/v2/entities/",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar_suscripciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1026/v2/subscriptions",
+							"host": [
+								"localhost"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
