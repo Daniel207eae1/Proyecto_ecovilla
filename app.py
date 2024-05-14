@@ -1,7 +1,7 @@
 import os
 import requests
 import time
-import pprint
+
 
 # Leer el archivo dse variables de entorno
 with open('AWN.env', 'r') as f:
@@ -13,12 +13,13 @@ with open('AWN.env', 'r') as f:
         print(valor)
         # Establecer la variable de entorno
         os.environ[nombre] = valor
-
+'''
 AMBIENT_ENDPOINT = os.environ["AMBIENT_ENDPOINT"]
 applicationKey = os.environ["applicationKey"]
 apiKey = os.environ["apiKey"]
-
-target_url = "http://localhost:1026/v2/entities/WS_UPB_EVI/attrs"
+'''
+#target_url = "http://localhost:1026/v2/entities/WS_UPB_EVI/attrs"
+target_url = os.environ["AWN_FIWARE_ENDPOINT"]
 headers = {
     "Content-Type": "application/json"
 }
@@ -32,7 +33,7 @@ while True:
     devices[1].get_data()
     devices[1].last_data
     api_response_data = devices[1].last_data
-    print(api_response_data)
+    print(api_response_data['dateutc'])
     pm10_value = 0
     pm25_value = 0
     humidity_value = api_response_data['humidity']
