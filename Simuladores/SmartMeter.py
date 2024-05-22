@@ -10,8 +10,7 @@ with open('AWN.env', 'r') as f:
         os.environ[nombre] = valor
 
 
-#target_url = os.environ["AWN_FIWARE_ENDPOINT"]
-target_url = "http://localhost:1026/v2/entities/SM_EVI01/attrs"
+target_url = os.environ["SM_FIWARE_ENDPOINT"]
 headers = {
     "Content-Type": "application/json"
 }
