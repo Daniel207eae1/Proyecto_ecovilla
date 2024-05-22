@@ -105,7 +105,6 @@ while True:
             "value": valor_redondeado
         }
         
-    print(datos)
     
     #print(patch_payload)
     response = requests.patch(target_url, headers=headers, json=datos)
