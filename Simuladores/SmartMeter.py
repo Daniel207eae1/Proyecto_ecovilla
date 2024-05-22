@@ -87,4 +87,4 @@ while True:
         print("Error updating attributes:", response.status_code)
         print(response.content)
       
-    time.sleep(8)
+    time.sleep(180)
