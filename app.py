@@ -2,29 +2,16 @@ import os
 import requests
 import time
 
-
-# Leer el archivo dse variables de entorno
+# Leer el archivo de variables de entorno
 with open('AWN.env', 'r') as f:
     for line in f:
-        # Dividir la línea en nombre y valor de la variable
         nombre, valor = line.strip().split('=')
-
-        print(nombre)
-        print(valor)
-        # Establecer la variable de entorno
         os.environ[nombre] = valor
-'''
-AMBIENT_ENDPOINT = os.environ["AMBIENT_ENDPOINT"]
-applicationKey = os.environ["applicationKey"]
-apiKey = os.environ["apiKey"]
-'''
-#target_url = "http://localhost:1026/v2/entities/WS_UPB_EVI/attrs"
+
 target_url = os.environ["AWN_FIWARE_ENDPOINT"]
 headers = {
     "Content-Type": "application/json"
 }
-
-
 
 while True:
     from ambient_api.ambientapi import AmbientAPI
