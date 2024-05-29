@@ -325,7 +325,7 @@ class sampleclient():
                     settings.media.close()
                 reader = None
             finally:
-                if reader:
+                if reader:  
                     try:
                         reader.close()
                     except Exception:
