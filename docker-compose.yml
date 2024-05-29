@@ -65,7 +65,7 @@ services:
       - CRATE_HEAP_SIZE=1g
 
   grafana:
-    image: grafana/grafana
+    image: grafana-customplugins:latest
     hostname: grafana
     container_name: grafana
     networks:
@@ -76,6 +76,12 @@ services:
       - "3000:3000"
     depends_on:
       - crate-db
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource,yesoreyeram-boomtheme-panel
+      - GF_PATHS_PLUGINS=/var/lib/customplugins
+      - GF_SECURITY_ALLOW_EMBEDDING=true
     volumes:
       - grafana-data:/var/lib/grafana
 

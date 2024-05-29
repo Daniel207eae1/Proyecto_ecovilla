@@ -19,15 +19,12 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 3,
   "links": [],
   "liveNow": true,
   "panels": [
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Tensión fase 1\n",
       "fieldConfig": {
         "defaults": {
@@ -83,10 +80,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -130,24 +127,32 @@
     {
       "datasource": {
         "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
+        "uid": "ddn78a9rqaoe8a"
       },
       "description": "Ángulo tensión fase 1",
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
           "fieldMinMax": false,
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "match": "null+nan",
+                "result": {
+                  "color": "dark-red",
+                  "index": 0,
+                  "text": "?"
+                }
+              },
+              "type": "special"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -161,10 +166,10 @@
         "x": 4,
         "y": 0
       },
-      "id": 38,
+      "id": 66,
       "options": {
         "allowNeedleCrossLimits": true,
-        "animateNeedleValueTransition": true,
+        "animateNeedleValueTransition": false,
         "animateNeedleValueTransitionSpeed": 500,
         "edgeWidth": 0.03,
         "gaugeRadius": 0,
@@ -212,7 +217,7 @@
         "unitsLabelColor": "transparent",
         "valueFont": "Inter",
         "valueFontSize": 22,
-        "valueYOffset": -60,
+        "valueYOffset": -40,
         "zeroNeedleAngle": 89,
         "zeroTickAngle": 90
       },
@@ -274,10 +279,7 @@
       "type": "briangann-gauge-panel"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Tensión fase 2",
       "fieldConfig": {
         "defaults": {
@@ -333,10 +335,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -378,10 +380,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Ángulo tensión fase 2",
       "fieldConfig": {
         "defaults": {
@@ -394,10 +393,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -414,7 +409,7 @@
       "id": 51,
       "options": {
         "allowNeedleCrossLimits": true,
-        "animateNeedleValueTransition": true,
+        "animateNeedleValueTransition": false,
         "animateNeedleValueTransitionSpeed": 500,
         "edgeWidth": 0.03,
         "gaugeRadius": 0,
@@ -462,7 +457,7 @@
         "unitsLabelColor": "transparent",
         "valueFont": "Inter",
         "valueFontSize": 22,
-        "valueYOffset": -60,
+        "valueYOffset": -40,
         "zeroNeedleAngle": 89,
         "zeroTickAngle": 90
       },
@@ -524,10 +519,7 @@
       "type": "briangann-gauge-panel"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Tensión fase 3\n",
       "fieldConfig": {
         "defaults": {
@@ -583,10 +575,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -628,10 +620,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Ángulo tensión fase 3",
       "fieldConfig": {
         "defaults": {
@@ -644,10 +633,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -664,7 +649,7 @@
       "id": 54,
       "options": {
         "allowNeedleCrossLimits": true,
-        "animateNeedleValueTransition": true,
+        "animateNeedleValueTransition": false,
         "animateNeedleValueTransitionSpeed": 500,
         "edgeWidth": 0.03,
         "gaugeRadius": 0,
@@ -712,7 +697,7 @@
         "unitsLabelColor": "transparent",
         "valueFont": "Inter",
         "valueFontSize": 22,
-        "valueYOffset": -60,
+        "valueYOffset": -40,
         "zeroNeedleAngle": 89,
         "zeroTickAngle": 90
       },
@@ -774,10 +759,7 @@
       "type": "briangann-gauge-panel"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Fase 1 por unidad   ",
       "fieldConfig": {
         "defaults": {
@@ -841,7 +823,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -906,10 +888,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Fase 2 por unidad   ",
       "fieldConfig": {
         "defaults": {
@@ -973,7 +952,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1038,10 +1017,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Fase 3 por unidad   ",
       "fieldConfig": {
         "defaults": {
@@ -1105,7 +1081,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1182,10 +1158,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Potencia reactiva (w)",
       "fieldConfig": {
         "defaults": {
@@ -1238,11 +1211,11 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": true,
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1284,10 +1257,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Potencia reactiva fase 1",
       "fieldConfig": {
         "defaults": {
@@ -1344,7 +1314,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1386,10 +1356,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Distorsión total armónica de corriente\n",
       "fieldConfig": {
         "defaults": {
@@ -1445,10 +1412,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1490,10 +1457,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Distorsión total armónica de tensión  \n\n",
       "fieldConfig": {
         "defaults": {
@@ -1549,10 +1513,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1594,10 +1558,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Distorsión total armónica de potencia  \n\n",
       "fieldConfig": {
         "defaults": {
@@ -1653,10 +1614,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true,
+        "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1698,10 +1659,7 @@
       "type": "gauge"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Potencia reactiva fase 2",
       "fieldConfig": {
         "defaults": {
@@ -1758,7 +1716,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1800,10 +1758,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Historial de Factor de potencia total en las últimas 24 horas",
       "fieldConfig": {
         "defaults": {
@@ -1890,6 +1845,7 @@
           "showLegend": false
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "single",
           "sort": "none"
         }
@@ -1980,10 +1936,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "grafana-postgresql-datasource",
-        "uid": "fdmemop58lslce"
-      },
+      "datasource": {},
       "description": "Potencia reactiva fase 3",
       "fieldConfig": {
         "defaults": {
@@ -2040,7 +1993,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.3",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -2095,6 +2048,7 @@
     "from": "now-5m",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "hidden": false,
     "refresh_intervals": [
@@ -2104,6 +2058,6 @@
   "timezone": "browser",
   "title": "SmartMeters3",
   "uid": "edasadsafgrefg",
-  "version": 12,
+  "version": 4,
   "weekStart": ""
 }
