@@ -68,7 +68,12 @@ class sampleclient():
     @classmethod
     def main(cls, args):
         # args: the command line arguments
-        target_url = "http://localhost:1026/v2/entities/SM_EVI01/attrs"
+        with open('AWN.env', 'r') as f:
+            for line in f:
+                nombre, valor = line.strip().split('=')
+                os.environ[nombre] = valor
+
+        target_url = os.environ["SM_FIWARE_ENDPOINT"]
         headers = {
             "Content-Type": "application/json"
         }
