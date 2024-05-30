@@ -83,7 +83,7 @@ class sampleclient():
             try:
                 # //////////////////////////////////////
                 #  Handle command line parameters.
-                argumentos = ['main.py', '-r', 'sn', '-c', '32', '-s', '1', '-h', '10.60.63.21', '-p', '4059', '-P', '00000000', '-a', 'Low']
+                argumentos = ['main.py', '-r', 'sn', '-c', '32', '-s', '1', '-h', '10.60.24.24', '-p', '4059', '-P', '00000000', '-a', 'Low']
                 ret = settings.getParameters(argumentos)
                 print(args)
                 if ret != 0:
