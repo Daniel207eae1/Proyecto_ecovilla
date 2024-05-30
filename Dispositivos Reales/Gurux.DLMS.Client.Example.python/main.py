@@ -331,7 +331,7 @@ class sampleclient():
                     except Exception:
                         traceback.print_exc()
                 print("Ended. Press any key to continue.")
-                time.sleep(5)
+                time.sleep(30)
 
         schedule.every(5).seconds.do(job)
         
